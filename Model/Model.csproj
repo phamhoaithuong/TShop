@@ -61,6 +61,7 @@
     <Compile Include="Model\MenuGroup.cs" />
     <Compile Include="Model\OrderDetails.cs" />
     <Compile Include="Model\Products.cs" />
+    <Compile Include="Model\Slide.cs" />
     <Compile Include="Model\TShopDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\Order.cs" />

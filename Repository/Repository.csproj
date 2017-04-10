@@ -63,6 +63,8 @@
     <Compile Include="Product\IProductRepository.cs" />
     <Compile Include="Product\ProductRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Slide\ISlidetRepository.cs" />
+    <Compile Include="Slide\SlidetRepository.cs" />
     <Compile Include="Vender\IVenderRepository.cs" />
     <Compile Include="Vender\VenderRepository.cs" />
   </ItemGroup>

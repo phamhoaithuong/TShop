@@ -28,6 +28,8 @@ namespace Model.Model
         public DbSet<Menu> Menu { get; set; }
 
         public DbSet<MenuGroup> MenuGroup { get; set; }
+
+        public DbSet<Slide> Slide { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
