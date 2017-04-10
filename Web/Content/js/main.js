@@ -1032,10 +1032,10 @@ function checkSupport(elemname, pluginname) {
 =========================================== */
 (function ($){
 
-	var panelContainer = $('div#option-panel'),
-		panelContainerWidth = panelContainer.outerWidth(),
-		positionLeft = panelContainer.offset().left,
-		panelOpen = positionLeft < 0 ? false : true;
+	//var panelContainer = $('div#option-panel'),
+ //       panelContainerWidth = panelContainer.outerWidth(),
+ //       positionLeft = panelContainer.offset().left,
+	//	panelOpen = positionLeft < 0 ? false : true;
 
 
 	$('#option-panel-btn').on('click', function() {
