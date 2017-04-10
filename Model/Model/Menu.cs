@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model.Model
+namespace Model
 {
     [Table("Menu")]
     public class Menu

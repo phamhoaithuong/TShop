@@ -1,12 +1,7 @@
-﻿using Model.Base;
-using Repository.Vender;
-using System;
+﻿using Model;
+using Model.Base;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Model;
-using Model.Model;
 
 namespace Repository.Product
 {

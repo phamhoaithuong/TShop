@@ -1,11 +1,13 @@
-﻿using Model.Base;
-using Model.Model;
+﻿using Model;
+using Model.Base;
 using Repository.Category;
+using Repository.MenuGroup;
+using Repository.Order;
+using Repository.OrderDetails;
+using Repository.Product;
+using Repository.Slide;
+using Repository.Vender;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Repository.Base
 {
@@ -13,6 +15,12 @@ namespace Repository.Base
     {
         private TShopDbContext dbContext;
         private ICategoryRepository _categoryRepository;
+        private IMenuGroupRepository _menuGroupRepository;
+        private IOrderRepository _orderRepository;
+        private IOrderDetailsRepository _orderDetailsRepository;
+        private IProductRepository _productRepository;
+        private ISlidetRepository _slidetRepository;
+        private IVenderRepository _venderRepository;
         public UnitOfWork()
         {
             dbContext = new TShopDbContext();
@@ -26,6 +34,36 @@ namespace Repository.Base
         public ICategoryRepository CategoryRepository
         {
             get { return _categoryRepository ?? (_categoryRepository= new CategoryRepository(DbContext)); }
+        }
+
+        public IMenuGroupRepository MenuGroupRepository
+        {
+            get { return _menuGroupRepository ?? (_menuGroupRepository = new MenuGroupRepository(DbContext)); }
+        }
+
+        public IOrderRepository OrderRepository
+        {
+            get { return _orderRepository ?? (_orderRepository = new OrderRepository(DbContext)); }
+        }
+
+        public IOrderDetailsRepository OrderDetailsRepository
+        {
+            get { return _orderDetailsRepository ?? (_orderDetailsRepository = new OrderDetailsRepository(DbContext)); }
+        }
+
+        public IProductRepository ProductRepository
+        {
+            get { return _productRepository ?? (_productRepository = new ProductRepository(DbContext)); }
+        }
+
+        public ISlidetRepository SlidetRepository
+        {
+            get { return _slidetRepository ?? (_slidetRepository = new SlidetRepository(DbContext)); }
+        }
+
+        public IVenderRepository VenderRepository
+        {
+            get { return _venderRepository ?? (_venderRepository = new VenderRepository(DbContext)); }
         }
 
         public void Commit()

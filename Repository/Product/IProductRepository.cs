@@ -1,6 +1,6 @@
 ﻿using Model.Base;
 
-namespace Repository.Vender
+namespace Repository.Product
 {
     public interface IProductRepository: IBaseRepository<Model.Products>
     {

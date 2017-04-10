@@ -54,7 +54,7 @@
     <Compile Include="Category\CategoryRepository.cs" />
     <Compile Include="Category\ICategoryRepository.cs" />
     <Compile Include="Class1.cs" />
-    <Compile Include="MenuGroup\IMenuGrouprRepository.cs" />
+    <Compile Include="MenuGroup\IMenuGroupRepository.cs" />
     <Compile Include="MenuGroup\MenuGroupRepository.cs" />
     <Compile Include="OrderDetails\IOrderDetailsRepository.cs" />
     <Compile Include="OrderDetails\OrderDetailsRepository.cs" />

@@ -2,7 +2,7 @@
 
 namespace Repository.Slide
 {
-    public interface ISlidetRepository: IBaseRepository<Model.Model.Slide>
+    public interface ISlidetRepository: IBaseRepository<Model.Slide>
     {
     }
 }
