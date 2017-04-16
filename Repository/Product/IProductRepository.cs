@@ -2,7 +2,7 @@
 
 namespace Repository.Product
 {
-    public interface IProductRepository: IBaseRepository<Model.Products>
+    public interface IProductRepository: IBaseRepository<Model.Model.Products>
     {
     }
 }

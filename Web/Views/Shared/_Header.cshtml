@@ -13,8 +13,16 @@
                     <div class="header-top-right">
 
                         <div class="header-text-container pull-right">
-                            <p class="header-text">Chào Khách</p>
-                            <p class="header-link"><a href="#">login</a>&nbsp;or&nbsp;<a href="#">Đăng ký tài khoản</a></p>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <p class="header-text">Xin chào <a href="#">@User.Identity.Name</a></p>                               
+                                <p class="header-link">@Html.ActionLink("Đăng xuất", "LogOff", "Account")</p>
+                            }
+                            else
+                            {
+                                <p class="header-text">Chào Khách</p>
+                                <p class="header-link">@Html.ActionLink("Đăng nhập", "Login", "Account") hoặc @Html.ActionLink("Đăng ký", "Register", "Account") </p>
+                            }
                         </div><!-- End .pull-right -->
                     </div><!-- End .header-top-right -->
                 </div><!-- End .col-md-12 -->

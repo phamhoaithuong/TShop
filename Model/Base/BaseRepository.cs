@@ -1,4 +1,6 @@
-﻿namespace Model.Base
+﻿using Model.Model;
+
+namespace Model.Base
 {
     public class BaseRepository
     {

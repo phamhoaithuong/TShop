@@ -1,5 +1,5 @@
-﻿using Model;
-using Model.Base;
+﻿using Model.Base;
+using Model.Model;
 
 namespace Repository.Category
 {

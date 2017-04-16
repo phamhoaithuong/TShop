@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Model
+namespace Model.Model
 {
-    public class TShopDbContext : DbContext
+    public class TShopDbContext : IdentityDbContext<ApplicationUser>
     {
         public TShopDbContext() : base("DefaultConnection")
         {
@@ -30,6 +25,12 @@ namespace Model
         public DbSet<MenuGroup> MenuGroup { get; set; }
 
         public DbSet<Slide> Slide { get; set; }
+
+        public static TShopDbContext Create()
+        {
+            return new TShopDbContext();
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

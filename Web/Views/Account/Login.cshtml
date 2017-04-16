@@ -1,0 +1,58 @@
+﻿@using Model.Model
+@model LoginViewModel
+@{
+    ViewBag.Title = "Đăng nhập";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="breadcrumb-container">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="index-2.html">Trang chủ</a></li>
+            <li class="active">Đăng nhập</li>
+        </ul>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <header class="content-title">
+                <h1 class="title">Đăng nhập</h1>
+                <p class="title-desc">Nếu bạn chưa có tài khoản vui lòng @Html.ActionLink("Đăng ký", "Register").</p>
+            </header>
+            <div class="xs-margin"></div><!-- space -->
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()                
+                <div class="col-md-12">
+                    <fieldset>
+                        <div class="input-group">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="input-icon input-icon-email"></span><span class="input-text">Email&#42;</span></span>
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control input-lg", placeholder = "Nhập email", required = "required" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div><!-- End .input-group -->
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="input-icon input-icon-password"></span><span class="input-text">Password&#42;</span></span>
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control input-lg", placeholder = "Nhập mật khẩu", required = "required" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </div><!-- End .input-group -->
+                        <div class="input-group custom-checkbox">                           
+                                @Html.CheckBoxFor(m => m.RememberMe)   
+                            <span class="checbox-container">
+                                <i class="fa fa-check"></i>
+                            </span>
+                            Ghi nhớ   
+                        </div><!-- End .input-group -->
+                        <div class="input-group">
+                            <input type="submit" value="ĐĂNG NHẬP" class="btn btn-custom-2 btn-lg md-margin">
+                        </div>
+                    </fieldset>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

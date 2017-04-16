@@ -1,13 +1,8 @@
 ﻿using Model.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using Model.Model;
 namespace Repository.OrderDetails
 {
-    public interface IOrderDetailsRepository: IBaseRepository<Model.OrderDetails>
+    public interface IOrderDetailsRepository: IBaseRepository<Model.Model.OrderDetails>
     {
     }
 }

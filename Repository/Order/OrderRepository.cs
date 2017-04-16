@@ -1,5 +1,6 @@
 ﻿using Model;
 using Model.Base;
+using Model.Model;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -11,22 +12,22 @@ namespace Repository.Order
         {
             dbContext = _dbContext;
         }
-        public void Add(Model.Order entity)
+        public void Add(Model.Model.Order entity)
         {
             dbContext.Order.Add(entity);
         }
 
-        public IQueryable<Model.Order> All(int skipRow = 0, int takeRow = 10)
+        public IQueryable<Model.Model.Order> All(int skipRow = 0, int takeRow = 10)
         {
             return dbContext.Order.Select(p => p).Skip(skipRow).Take(takeRow);
         }
 
-        public void Delete(Model.Order entity)
+        public void Delete(Model.Model.Order entity)
         {
             dbContext.Order.Remove(entity);
         }
 
-        public void Delete(IEnumerable<Model.Order> entity)
+        public void Delete(IEnumerable<Model.Model.Order> entity)
         {
             foreach (var item in entity)
             {
@@ -34,12 +35,12 @@ namespace Repository.Order
             }
         }
 
-        public Model.Order GetById(int id)
+        public Model.Model.Order GetById(int id)
         {
             return dbContext.Order.FirstOrDefault(p => p.Id == id);
         }
 
-        public void Update(Model.Order entity)
+        public void Update(Model.Model.Order entity)
         {
             var orther = dbContext.Order.FirstOrDefault(p => p.Id == entity.Id);
             if (orther != null)

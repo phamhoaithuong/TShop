@@ -1,6 +1,7 @@
-﻿using Model;
-using Model.Base;
+﻿using Model.Base;
+using Model.Model;
 using Repository.Category;
+using Repository.Menu;
 using Repository.MenuGroup;
 using Repository.Order;
 using Repository.OrderDetails;
@@ -15,6 +16,7 @@ namespace Repository.Base
     {
         private TShopDbContext dbContext;
         private ICategoryRepository _categoryRepository;
+        private IMenuRepositorycs _menuRepository;
         private IMenuGroupRepository _menuGroupRepository;
         private IOrderRepository _orderRepository;
         private IOrderDetailsRepository _orderDetailsRepository;
@@ -64,6 +66,11 @@ namespace Repository.Base
         public IVenderRepository VenderRepository
         {
             get { return _venderRepository ?? (_venderRepository = new VenderRepository(DbContext)); }
+        }
+
+        public IMenuRepositorycs MenuRepositorycs
+        {
+            get { return _menuRepository ?? (_menuRepository = new MenuRepository(DbContext)); }
         }
 
         public void Commit()
