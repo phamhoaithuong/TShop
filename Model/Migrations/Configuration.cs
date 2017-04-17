@@ -1,10 +1,9 @@
 namespace Model.Migrations
 {
     using global::Model.Model;
-    using System;
-    using System.Data.Entity;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<TShopDbContext>
     {
@@ -16,18 +15,29 @@ namespace Model.Migrations
 
         protected override void Seed(TShopDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            var RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            // Create Admin Role
+            string roleName = "Admin";
+            string roleName1 = "Customer";
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            IdentityResult roleResult;
+            // Check to see if Role Exists, if not create it
+            if (!RoleManager.RoleExists(roleName))
+            {
+                roleResult = RoleManager.Create(new IdentityRole(roleName));
+            }
+            if (!RoleManager.RoleExists(roleName1))
+            {
+                roleResult = RoleManager.Create(new IdentityRole(roleName1));
+            }
+            // create user admin
+            if (UserManager.FindByName("admin@admin.com") == null)
+            {
+                var user = new ApplicationUser() { UserName = "admin@admin.com" };
+                UserManager.Create(user, "Admin@123");
+                UserManager.AddToRole(user.Id, "Admin");
+            }
         }
     }
 }

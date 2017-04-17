@@ -50,9 +50,8 @@ namespace Web.App_Start
 
             // Uncomment the following lines to enable logging in with third party login providers
             //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
-
+            //    clientId: "218eb06e-194d-4f98-884f-39d4010ef794",
+            //    clientSecret: "0x0vbCNTT1bqA1TZpQgdbim");
             //app.UseTwitterAuthentication(
             //   consumerKey: "",
             //   consumerSecret: "");

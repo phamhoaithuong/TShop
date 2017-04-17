@@ -69,6 +69,11 @@ namespace Model.Model
         [Display(Name = "Họ và tên")]
         public string FullName { get; set; }
 
+        [Display(Name = "Phone")]
+        [DataType(DataType.PhoneNumber, ErrorMessage = "Provided phone number not valid")]
+        //[RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Không phải là số điện thoại")]
+        public string Phone { get; set; }
+
         [Required]
         [MaxLength(256, ErrorMessage = "Giới hạn 256 ký tự")]
         [Display(Name = "Địa chỉ")]
@@ -118,5 +123,9 @@ namespace Model.Model
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+    }
+
+    public class UserViewModel:ApplicationUser
+    {
     }
 }

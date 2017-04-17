@@ -17,7 +17,6 @@ namespace Web.App_Start
             : base(store)
         {
         }
-
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
         {
             var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<TShopDbContext>()));
@@ -63,7 +62,6 @@ namespace Web.App_Start
             return manager;
         }
     }
-
     // Configure the application sign-in manager which is used in this application.
     public class ApplicationSignInManager : SignInManager<ApplicationUser, string>
     {

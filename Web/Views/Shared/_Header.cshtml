@@ -5,7 +5,7 @@
                 <div class="col-md-12">
                     <div class="header-top-left">
                         <ul id="top-links" class="clearfix">                            
-                            <li><a href="#" title="My Account"><span class="top-icon top-icon-user"></span><span class="hide-for-xs">Tài khoản</span></a></li>
+                            <li><a href="@Url.Action("Index","Account")" title="My Account"><span class="top-icon top-icon-user"></span><span class="hide-for-xs">Tài khoản</span></a></li>
                             <li><a href="cart.html" title="My Cart"><span class="top-icon top-icon-cart"></span><span class="hide-for-xs">Giỏ hàng</span></a></li>
                             <li><a href="checkout.html" title="Checkout"><span class="top-icon top-icon-check"></span><span class="hide-for-xs">Thanh toán</span></a></li>
                         </ul>
@@ -15,7 +15,7 @@
                         <div class="header-text-container pull-right">
                             @if (User.Identity.IsAuthenticated)
                             {
-                                <p class="header-text">Xin chào <a href="#">@User.Identity.Name</a></p>                               
+                                <p class="header-text">Xin chào <a href="@Url.Action("Index","Account")">@User.Identity.Name</a></p>                               
                                 <p class="header-link">@Html.ActionLink("Đăng xuất", "LogOff", "Account")</p>
                             }
                             else

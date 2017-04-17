@@ -23,6 +23,7 @@ namespace Repository.Base
         private IProductRepository _productRepository;
         private ISlidetRepository _slidetRepository;
         private IVenderRepository _venderRepository;
+        
         public UnitOfWork()
         {
             dbContext = new TShopDbContext();

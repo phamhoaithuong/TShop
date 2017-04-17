@@ -1,15 +1,12 @@
-﻿using System;
-using System.Globalization;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using Model.Model;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
 using Web.App_Start;
-using Model.Model;
 
 namespace Web.Controllers
 {
@@ -51,6 +48,67 @@ namespace Web.Controllers
                 _userManager = value;
             }
         }
+
+        //GET: /Account/Index
+        [HttpGet]
+        public ActionResult Index()
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login");
+            }
+            string id = User.Identity.GetUserId();
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            return View(user);
+        }
+
+        //POST: /Account/Index
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index(ApplicationUser model)
+        {
+            if (ModelState.IsValid)
+            {
+                string id = User.Identity.GetUserId();
+                ApplicationUser user = UserManager.FindById(id);
+                user.FullName = model.FullName;
+                user.PhoneNumber = model.PhoneNumber;
+                user.Address = model.Address;
+                IdentityResult result = UserManager.Update(user);
+                if (result.Succeeded)
+                    @ViewBag.Result = "Cập nhật thông tin tài khoản thành công.";
+                else @ViewBag.Result = "Có lỗi xãy ra!";
+            }
+            return View();
+        }
+
+        //GET: /Account/ChangePassword
+        [Authorize]
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        //POST: /Account/ChangePassword
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangePassword(ResetPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                string id = User.Identity.GetUserId();
+                ApplicationUser user = UserManager.FindById(id);
+                user.PasswordHash = UserManager.PasswordHasher.HashPassword(model.Password);
+                IdentityResult result = UserManager.Update(user);
+                if (result.Succeeded)
+                    ViewBag.Result = "Đổi mật khẩu thành công!";
+                else ViewBag.Result = "Có lỗi xãy ra!";
+            }
+            return View();
+        }
+
 
         //
         // GET: /Account/Login
@@ -151,10 +209,11 @@ namespace Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email,FullName=model.FullName,Address=model.Address,PhoneNumber=model.Phone };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    await UserManager.AddToRoleAsync(user.Id, "Customer");
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771

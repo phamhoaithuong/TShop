@@ -1,0 +1,62 @@
+﻿@using Model.Model
+@model ApplicationUser
+@{
+    ViewBag.Title = "Thông tài khoản";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="breadcrumb-container">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
+            <li class="active">Tài khoản</li>
+        </ul>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <header class="content-title">
+                <h1 class="title">Thông tin tài khoản</h1>
+                <p class="title-desc">@Html.ActionLink("Đổi mật khẩu", "ChangePassword")</p>
+            </header>
+            <div class="xs-margin"></div><!-- space -->
+            @using (Html.BeginForm("Index", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <div class="col-md-12">
+                    <fieldset>
+                        <div class="input-group">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })                            
+                            <p class="text-danger">@ViewBag.Result</p>
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="input-icon input-icon-user"></span><span class="input-text">Họ và tên&#42;</span></span>
+                            @Html.TextBoxFor(m => m.FullName, new { @class = "form-control input-lg", placeholder = "Họ và tên", required = "required" })
+                            @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "text-danger" })
+                        </div><!-- End .input-group -->
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="input-icon input-icon-address"></span><span class="input-text">Địa chỉ&#42;</span></span>
+                            @Html.TextAreaFor(m => m.Address, new { @class = "form-control input-lg", placeholder = "Địa chỉ", required = "required", row = 4 })
+                            @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+                        </div><!-- End .input-group -->
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="input-icon input-icon-email"></span><span class="input-text">Email&#42;</span></span>
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control input-lg", disabled = "disabled" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div><!-- End .input-group -->
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="input-icon input-icon-phone"></span><span class="input-text">Phone</span></span>
+                            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control input-lg", placeholder = "Nhập số điện thoại" })
+                            @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="input-group">
+                            <input type="submit" value="CẬP NHẬT" class="btn btn-custom-2 btn-lg md-margin">
+                        </div>
+                    </fieldset>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+

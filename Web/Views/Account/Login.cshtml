@@ -8,7 +8,7 @@
 <div id="breadcrumb-container">
     <div class="container">
         <ul class="breadcrumb">
-            <li><a href="index-2.html">Trang chủ</a></li>
+            <li><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
             <li class="active">Đăng nhập</li>
         </ul>
     </div>
@@ -18,7 +18,7 @@
         <div class="col-md-12">
             <header class="content-title">
                 <h1 class="title">Đăng nhập</h1>
-                <p class="title-desc">Nếu bạn chưa có tài khoản vui lòng @Html.ActionLink("Đăng ký", "Register").</p>
+                <p class="title-desc">Nếu bạn chưa có tài khoản vui lòng @Html.ActionLink("Đăng ký", "Register") hoặc @Html.ActionLink("Quên mật khẩu", "ForgotPassword").</p>
             </header>
             <div class="xs-margin"></div><!-- space -->
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
