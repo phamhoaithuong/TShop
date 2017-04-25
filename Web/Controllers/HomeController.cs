@@ -1,11 +1,9 @@
-﻿using Repository.Base;
-using System;
+﻿using Model.Model;
+using Repository.Base;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using Model.Model;
-using System.Collections;
+using Web.Common;
 
 namespace Web.Controllers
 {
@@ -52,14 +50,16 @@ namespace Web.Controllers
             return PartialView(result);
         }
 
+        [ChildActionOnly]
         public PartialViewResult _Header()
         {
-            IEnumerable<Categories> result = Enumerable.Empty<Categories>();
-            using (var uow = new UnitOfWork())
+            var cart = Session[Constants.CartSession];
+            var list = new List<CartItem>();
+            if (cart != null)
             {
-                result = uow.CategoryRepository.All();
+                list = (List<CartItem>)cart;
             }
-            return PartialView(result);
+            return PartialView(list);
         }
 
         public PartialViewResult _Brand()
@@ -70,19 +70,6 @@ namespace Web.Controllers
                 result = uow.VenderRepository.All();
             }
             return PartialView(result);
-        }
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
         }
     }
 }

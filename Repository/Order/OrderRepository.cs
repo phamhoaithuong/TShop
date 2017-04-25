@@ -3,6 +3,7 @@ using Model.Base;
 using Model.Model;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace Repository.Order
 {
@@ -12,9 +13,11 @@ namespace Repository.Order
         {
             dbContext = _dbContext;
         }
-        public void Add(Model.Model.Order entity)
+
+        public int Insert(Model.Model.Order entity)
         {
             dbContext.Order.Add(entity);
+            return entity.Id;
         }
 
         public IQueryable<Model.Model.Order> All(int skipRow = 0, int takeRow = 10)
@@ -45,6 +48,11 @@ namespace Repository.Order
             var orther = dbContext.Order.FirstOrDefault(p => p.Id == entity.Id);
             if (orther != null)
                 orther = entity;
+        }
+
+        void IBaseRepository<Model.Model.Order>.Add(Model.Model.Order entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

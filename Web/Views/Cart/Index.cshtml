@@ -1,0 +1,110 @@
+﻿@using Model.Model
+@model List<CartItem>
+@{
+    ViewBag.Title = "Giỏ hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="breadcrumb-container">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
+            <li class="active">Giỏ hàng</li>
+        </ul>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <header class="content-title">
+                <h1 class="title">Giỏ hàng</h1>
+                <p class="title-desc">Danh sách sản phẩm trong giỏ hàng của bạn!</p>
+            </header>
+            <div class="xs-margin"></div><!-- space -->
+            <div class="row">
+
+                <div class="col-md-12 table-responsive">
+                    @if (Model.Count > 0)
+                    {
+                        <table class="table cart-table">
+                            <thead>
+                                <tr>
+                                    <th class="table-title">Tên sản phẩm</th>
+                                    <th class="table-title">Mã sản phẩm</th>
+                                    <th class="table-title">Đơn giá</th>
+                                    <th class="table-title">Số lượng</th>
+                                    <th class="table-title">Thành tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    foreach (var i in Model)
+                                    {
+                                        string[] arrImg = i.Product.Image.Split(';');
+                                        <tr>
+                                            <td class="item-name-col">
+                                                <figure>
+                                                    <a href="#"><img src="~/Upload/images/products/@arrImg[0]" alt="Lowlands Lace Blouse"></a>
+                                                </figure>
+                                                <header class="item-name"><a href="#">@i.Product.Name</a></header>
+                                                <ul>
+                                                    <li>Thương hiệu: @i.Product.Vender.Name</li>
+                                                </ul>
+                                            </td>
+                                            <td class="item-code">@i.Product.Code</td>
+                                            <td class="item-price-col"><span class="item-price-special">$@i.Product.Price</span></td>
+                                            <td>
+                                                <div class="custom-quantity-input">
+                                                    <input type="number" name="quantity" class="txtQuantity" data-id="@i.Product.Id" value="@i.Quantity">
+                                                    <a href="#" onclick="return false;" class="quantity-btn quantity-input-up"><i class="fa fa-angle-up"></i></a>
+                                                    <a href="#" onclick="return false;" class="quantity-btn quantity-input-down"><i class="fa fa-angle-down"></i></a>
+                                                </div>
+                                            </td>
+                                            <td class="item-total-col">
+                                                <span class="item-price-special">$@(i.Product.Price * i.Quantity)</span>
+                                                <a href="#" data-id="@i.Product.Id" class="close-button btn-delete"></a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                        <hr />
+                        <button id="btn-update" class="btn btn-custom-2">Cập nhật</button>
+                        <a href="@Url.Action("DeleteAll","Cart")" class="btn btn-custom-2">Xóa tất cả</a>
+                        <div class="lg-margin visible-sm visible-xs"></div><!-- space -->
+                                    <div class="col-md-4 col-sm-12 col-xs-12 pull-right">
+                                        <table class="table total-table">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="total-table-title">Thành tiền:</td>
+                                                    <td>$@Model.Sum(p => p.Product.Price * p.Quantity)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="total-table-title">Phí vận chuyển:</td>
+                                                    <td>$0.00</td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <td>Tổng thanh toán:</td>
+                                                    <td>$@Model.Sum(p => p.Product.Price * p.Quantity)</td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                        <div class="md-margin"></div><!-- End .space -->
+                                        <a href="/" class="btn btn-custom-2">Tiếp tục mua sắm</a>
+                                        <a href="@Url.Action("CheckOut","Cart")" class="btn btn-custom-2">Thanh toán</a>
+                                    </div><!-- End .col-md-4 -->
+                                    }
+                                    else
+                                    {
+                                        <span>Chưa có sản phẩm nào được mua</span>
+                                    }
+
+                </div><!-- End .col-md-12 -->
+
+            </div><!-- End .row -->
+        </div>
+    </div>
+</div>
+

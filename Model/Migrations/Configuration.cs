@@ -10,7 +10,7 @@ namespace Model.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-           // AutomaticMigrationDataLossAllowed = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(TShopDbContext context)

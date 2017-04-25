@@ -1,4 +1,6 @@
-﻿<header id="header">
+﻿@using Model.Model
+@model List<CartItem>
+<header id="header">
     <div id="header-top">
         <div class="container">            
             <div class="row">
@@ -6,7 +8,7 @@
                     <div class="header-top-left">
                         <ul id="top-links" class="clearfix">                            
                             <li><a href="@Url.Action("Index","Account")" title="My Account"><span class="top-icon top-icon-user"></span><span class="hide-for-xs">Tài khoản</span></a></li>
-                            <li><a href="cart.html" title="My Cart"><span class="top-icon top-icon-cart"></span><span class="hide-for-xs">Giỏ hàng</span></a></li>
+                            <li><a href="@Url.Action("Index","Cart")" title="My Cart"><span class="top-icon top-icon-cart"></span><span class="hide-for-xs">Giỏ hàng</span></a></li>
                             <li><a href="checkout.html" title="Checkout"><span class="top-icon top-icon-check"></span><span class="hide-for-xs">Thanh toán</span></a></li>
                         </ul>
                     </div><!-- End .header-top-left -->
@@ -36,17 +38,27 @@
                 <div class="col-md-5 col-sm-5 col-xs-12 logo-container">
                     <h1 class="logo clearfix">
                         <span>Responsive eCommerce Template</span>
-                        <a href="index-2.html" title="Venedor eCommerce Template"><img src="~/Upload/images/logo.png" alt="Venedor Commerce Template" width="188" height="67"></a>
+                        <a href="/" title="Venedor eCommerce Template"><img src="~/Upload/images/logo.png" alt="Venedor Commerce Template" width="188" height="67"></a>
                     </h1>
                 </div><!-- End .col-md-5 -->
                 <div class="col-md-7 col-sm-7 col-xs-12 header-inner-right clearfix">
                     <div class="header-inner-right-wrapper">
                         <div class="dropdown-cart-menu-container pull-right">
                             <div class="btn-group dropdown-cart">
-                                <button type="button" class="btn btn-custom dropdown-toggle" data-toggle="dropdown">
-                                    <span class="cart-menu-icon"></span>
-                                    0 item(s) <span class="drop-price">- $0.00</span>
-                                </button>
+                                @if (Model.Count>0)
+                                {
+                                    <button type="button" class="btn btn-custom dropdown-toggle" data-toggle="dropdown">
+                                        <span class="cart-menu-icon"></span>
+                                        @Model.Count sản phẩm <span class="drop-price">- $@Model.Sum(p => p.Product.Price * p.Quantity)</span>
+                                    </button>
+                                }
+                                else
+                                {
+                                    <button type="button" class="btn btn-custom dropdown-toggle" data-toggle="dropdown">
+                                        <span class="cart-menu-icon"></span>
+                                        0 sản phẩm <span class="drop-price">- $0</span>
+                                    </button>
+                                }
                             </div><!-- End .btn-group -->
                         </div><!-- End .dropdown-cart-menu-container -->
 

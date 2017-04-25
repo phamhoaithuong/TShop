@@ -13,10 +13,16 @@ namespace Model.Model
         public int Id { get; set; }
 
         [Required]
-        public int UserID { get; set; }
+        public string UserID { get; set; }
 
         [Required]
         public bool Status { get; set; }
+
+        public string Address { get; set; }
+
+        public string Email { get; set; }
+
+        public string Phone { get; set; }
 
         public DateTime Created { get; set; }
 

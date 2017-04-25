@@ -48,11 +48,11 @@
                     <div class="item-meta-container">
                         <h3 class="item-name"><a href="product.html">@i.Product.Name</a></h3>
                         <div class="item-action">
-                            <a href="#" class="item-add-btn">
+                            <a href="@Url.Action("AddItem","Cart",new { productId=i.Product.Id, quantity =1})" class="item-add-btn">
                                 <span class="icon-cart-text">Mua ngay</span>
                             </a>
                             <div class="item-action-inner">
-                                <a href="#" class="icon-button icon-compare">Checkout</a>
+                                <a href="@Url.Action("CheckOut","Cart")" class="icon-button icon-compare">Checkout</a>
                             </div><!-- End .item-action-inner -->
                         </div><!-- End .item-action -->
                     </div><!-- End .item-meta-container -->

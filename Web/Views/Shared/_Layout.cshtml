@@ -33,7 +33,7 @@
         <script src="js/html5shiv.js"></script>
         <script src="js/respond.min.js"></script>
     <![endif]-->
-
+    <script src="@Url.Content("~/Content/js/modernizr.custom.js")"></script>
     <style id="custom-style">
 
     </style>
@@ -41,7 +41,7 @@
 <body>
 
     <div id="wrapper">
-        @Html.Partial("_Header")
+        @Html.Action("_Header", "Home")
 
         <section id="content">
             @RenderBody()        
@@ -145,15 +145,20 @@
     <script src="@Url.Content("~/Content/js/retina-1.1.0.min.js")"></script>
     <script src="@Url.Content("~/Content/js/jquery.placeholder.js")"></script>
     <script src="@Url.Content("~/Content/js/jquery.hoverIntent.min.js")"></script>
-    <script src="@Url.Content("~/Content/js/twitter/jquery.tweet.min.js")"></script>
+    @*<script src="@Url.Content("~/Content/js/twitter/jquery.tweet.min.js")"></script>*@
     <script src="@Url.Content("~/Content/js/jquery.flexslider-min.js")"></script>
     <script src="@Url.Content("~/Content/js/owl.carousel.min.js")"></script>
     <script src="@Url.Content("~/Content/js/jflickrfeed.min.js")"></script>
     <script src="@Url.Content("~/Content/js/jquery.prettyPhoto.js")"></script>
+    <script src="@Url.Content("~/Content/js/jquery.isotope.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/jquery.fitvids.js")"></script>
+    <script src="@Url.Content("~/Content/js/colpick.js")"></script>  
+    <script src="@Url.Content("~/Content/js/jquery.elastislide.js")"></script>
+    <script src="@Url.Content("~/Content/js/jquery.mlens-1.3.min.js")"></script>
     <script src="@Url.Content("~/Content/js/jquery.themepunch.plugins.min.js")"></script>
-    <script src="@Url.Content("~/Content/js/jquery.themepunch.revolution.min.js")"></script>
-    <script src="@Url.Content("~/Content/js/colpick.js")"></script>
+    <script src="@Url.Content("~/Content/js/jquery.themepunch.revolution.min.js")"></script>  
     <script src="@Url.Content("~/Content/js/main.js")"></script>
+    <script src="@Url.Content("~/Content/js/CartItem.js")"></script>
 
     <script>
     	$(function() {
@@ -185,8 +190,49 @@
                 shadow:0
 
               });
+        });
+        $(function () {
 
-    	});
+            var carouselContainer = $('#product-carousel'),
+                productImg = $('#product-image');
+
+            carouselContainer.elastislide({
+                orientation: 'vertical',
+                minItems: 4
+
+            });
+
+            productImg.mlens({
+                imgSrc: $("#product-image").attr("data-big"),
+                lensShape: "square",
+                lensSize: 150,
+                borderSize: 4,
+                borderColor: "#999",
+                borderRadius: 0
+            });
+
+
+            var oldImg = productImg.attr('src');
+            carouselContainer.find('li').on('mouseover', function () {
+
+                var newImg = $(this).find('a').attr('href');
+
+                productImg.attr({ 'src': newImg, 'data-big': newImg }).trigger('imagechanged');
+
+            });
+
+            // triggered with custom event
+            productImg.on('imagechanged', function () {
+                productImg.mlens("update", 0, {
+                    imgSrc: productImg.attr("data-big"),
+                    lensShape: "square",
+                    lensSize: 150,
+                    borderSize: 4,
+                    borderColor: "#999"
+                });
+            });
+
+        });
     </script>
 </body>
 </html>

@@ -1,0 +1,60 @@
+﻿@using Model.Model
+@model ApplicationUser
+@{
+    ViewBag.Title = "Thanh toán";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="breadcrumb-container">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
+            <li class="active">Thanh toán</li>
+        </ul>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <header class="content-title">
+                <h1 class="title">Thanh toán</h1>
+                <p class="title-desc">Chúc bạn có một ngày mua sắm vui vẻ! Nếu muốn thay đổi thông tin tài khoản vui lòng nhấn vào @Html.ActionLink("Đây","Index","Account")</p>
+            </header>
+            <div class="xs-margin"></div><!-- space -->
+                          
+                <div class="col-md-12">
+                    <fieldset>
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="input-icon input-icon-user"></span><span class="input-text">Họ và tên&#42;</span></span>
+                            @Html.TextBoxFor(m => m.FullName, new { @class = "form-control input-lg", placeholder = "Họ và tên", required = "required", disabled = "disabled" })
+                           
+                        </div><!-- End .input-group -->
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="input-icon input-icon-address"></span><span class="input-text">Địa chỉ&#42;</span></span>
+                            @Html.TextAreaFor(m => m.Address, new { @class = "form-control input-lg", placeholder = "Địa chỉ", required = "required", row = 4, disabled = "disabled" })
+                           
+                        </div><!-- End .input-group -->
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="input-icon input-icon-email"></span><span class="input-text">Email&#42;</span></span>
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control input-lg", disabled = "disabled" })
+                            
+                        </div><!-- End .input-group -->
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="input-icon input-icon-phone"></span><span class="input-text">Phone</span></span>
+                            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control input-lg", placeholder = "Nhập số điện thoại", disabled = "disabled" })
+                           
+                        </div>
+                        <div class="input-group">
+                            @using (Html.BeginForm("CheckOut", "Cart", FormMethod.Post))
+                            {
+                                <input type="submit" value="Xác nhận thanh toán" class="btn btn-custom-2 btn-lg md-margin">
+                            }
+                        </div>
+                    </fieldset>
+                </div>
+           
+        </div>
+    </div>
+</div>
+
+

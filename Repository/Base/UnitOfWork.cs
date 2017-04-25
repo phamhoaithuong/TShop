@@ -105,6 +105,13 @@ namespace Repository.Base
         private void ResetRepositories()
         {
             _categoryRepository = null;
+            _menuRepository = null;
+            _menuGroupRepository = null;
+            _orderRepository = null;
+            _orderDetailsRepository = null;
+            _productRepository = null;
+            _slidetRepository = null;
+            _venderRepository = null;
         }
     }
 }

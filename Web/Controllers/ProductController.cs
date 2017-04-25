@@ -23,6 +23,7 @@ namespace Web.Controllers
                 product = uow.ProductRepository.GetById(id);
                 if (product != null)
                 {
+                    ViewBag.Title = product.Name;
                     result.Product = product;
                     result.ArrayImage = product.Image.Split(';');
                 }
