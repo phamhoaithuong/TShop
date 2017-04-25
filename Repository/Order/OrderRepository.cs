@@ -35,7 +35,7 @@ namespace Repository.Order
             }
         }
 
-        public Model.Model.Order GetById(int id)
+        public Model.Model.Order GetById(int? id)
         {
             return dbContext.Order.FirstOrDefault(p => p.Id == id);
         }

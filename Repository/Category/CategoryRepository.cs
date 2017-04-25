@@ -34,7 +34,7 @@ namespace Repository.Category
             }
         }
 
-        public Categories GetById(int id)
+        public Categories GetById(int? id)
         {
             return dbContext.Categories.FirstOrDefault(p => p.Id == id);
         }

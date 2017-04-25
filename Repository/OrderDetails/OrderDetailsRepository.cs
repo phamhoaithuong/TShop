@@ -34,7 +34,7 @@ namespace Repository.OrderDetails
             }
         }
 
-        public Model.Model.OrderDetails GetById(int id)
+        public Model.Model.OrderDetails GetById(int? id)
         {
             return dbContext.OrderDetails.FirstOrDefault(p => p.Id == id);
         }

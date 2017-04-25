@@ -34,7 +34,7 @@ namespace Repository.MenuGroup
             }
         }
 
-        public Model.Model.MenuGroup GetById(int id)
+        public Model.Model.MenuGroup GetById(int? id)
         {
             return dbContext.MenuGroup.FirstOrDefault(p => p.Id == id);
         }

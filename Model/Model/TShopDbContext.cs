@@ -7,7 +7,7 @@ namespace Model.Model
     {
         public TShopDbContext() : base("DefaultConnection")
         {
-            this.Configuration.LazyLoadingEnabled = false;
+            this.Configuration.LazyLoadingEnabled = true;
         }
 
         public DbSet<Categories> Categories { get; set; }

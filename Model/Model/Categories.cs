@@ -17,7 +17,7 @@ namespace Model.Model
         public string Name { get; set; }
 
         [Display(Name = "Danh mục con")]
-        public int ParentId { get; set; }
+        public int? ParentId { get; set; }
         public virtual IEnumerable<Products> Products { get; set; }
 
     }

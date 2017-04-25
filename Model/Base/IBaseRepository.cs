@@ -12,7 +12,7 @@ namespace Model.Base
         void Update(T entity);
         void Delete(T entity);
         void Delete(IEnumerable<T> entity);
-        T GetById(int id);
+        T GetById(int? id);
         IQueryable<T> All(int skipRow = 0, int takeRow = 10);
     }
 }

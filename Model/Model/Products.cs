@@ -20,6 +20,12 @@ namespace Model.Model
         [StringLength(30, ErrorMessage = "Tên sản phẩm tối đa {0} ký tự")]
         public String Name { get; set; }
 
+        [Required]
+        [Display(Name = "Mã sản phẩm")]
+        public string Code { get; set; }
+
+        public string Video { get; set; }
+
         public int Vender_Id { get; set; }
 
         [ForeignKey("Vender_Id")]
@@ -42,16 +48,15 @@ namespace Model.Model
         [Display(Name = "Giá")]
         public decimal Price { get; set; }
 
-        [Required]
         [Display(Name = "Giá cũ")]
-        public decimal OldPrice { get; set; }
+        public decimal? OldPrice { get; set; }
 
         [Required]
         [Display(Name = "Kích thước")]
-        public int Length { get; set; }
+        public int? Length { get; set; }
 
         [Display(Name = "Chiết khấu")]
-        public int Discount { get; set; }
+        public int? Discount { get; set; }
 
         [Display(Name = "Trạng thái")]
         public bool Status { get; set; }
@@ -64,7 +69,7 @@ namespace Model.Model
         public DateTime Created { get; set; }
 
         [Display(Name = "Lượt xem")]
-        public int View { get; set; }
+        public int? View { get; set; }
 
         public string Tags { get; set; }
     }

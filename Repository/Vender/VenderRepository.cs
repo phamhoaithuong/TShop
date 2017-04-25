@@ -19,7 +19,7 @@ namespace Repository.Vender
 
         public IQueryable<Model.Model.Vender> All(int skipRow = 0, int takeRow = 10)
         {
-            return dbContext.Vender.Select(p => p).Skip(skipRow).Take(takeRow);
+            return dbContext.Vender.Select(p => p).OrderBy(p=>p.Id).Skip(skipRow).Take(takeRow);
         }
 
         public void Delete(Model.Model.Vender entity)
@@ -35,7 +35,7 @@ namespace Repository.Vender
             }
         }
 
-        public Model.Model.Vender GetById(int id)
+        public Model.Model.Vender GetById(int? id)
         {
             return dbContext.Vender.FirstOrDefault(p => p.Id == id);
         }

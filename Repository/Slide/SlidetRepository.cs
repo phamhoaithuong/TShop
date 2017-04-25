@@ -35,7 +35,7 @@ namespace Repository.Slide
             }
         }
 
-        public Model.Model.Slide GetById(int id)
+        public Model.Model.Slide GetById(int? id)
         {
             return dbContext.Slide.FirstOrDefault(p => p.Id == id);
         }

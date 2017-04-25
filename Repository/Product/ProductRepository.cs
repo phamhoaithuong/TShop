@@ -2,6 +2,7 @@
 using Model.Model;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace Repository.Product
 {
@@ -18,7 +19,7 @@ namespace Repository.Product
 
         public IQueryable<Products> All(int skipRow = 0, int takeRow = 10)
         {
-            return dbContext.Products.Select(p => p).Skip(skipRow).Take(takeRow);
+            return dbContext.Products.Select(p => p).Where(p=>p.Status==true).Skip(skipRow).Take(takeRow).OrderByDescending(p=>p.Id);
         }
 
         public void Delete(Products entity)
@@ -34,9 +35,21 @@ namespace Repository.Product
             }
         }
 
-        public Products GetById(int id)
+        public Products GetById(int? id)
         {
-            return dbContext.Products.FirstOrDefault(p => p.Id == id);
+            return dbContext.Products.FirstOrDefault(p => p.Id == id && p.Status==true);
+        }
+
+        public IQueryable<Products> GetProductLastest()
+        {
+            var products = dbContext.Products.Select(p => p).Where(p => p.Status == true).OrderBy(p=>p.Id).Take(10).OrderByDescending(p => p.Id);
+
+            return products;
+        }
+
+        public IQueryable<Products> GetProductsDiscount()
+        {
+            return dbContext.Products.Select(p => p).Where(p=>p.Discount!=null && p.Status==true).OrderBy(p => p.Id).Take(10).OrderByDescending(p => p.Id);
         }
 
         public void Update(Products entity)

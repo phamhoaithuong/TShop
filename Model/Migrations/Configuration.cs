@@ -31,13 +31,13 @@ namespace Model.Migrations
             {
                 roleResult = RoleManager.Create(new IdentityRole(roleName1));
             }
-            // create user admin
-            if (UserManager.FindByName("admin@admin.com") == null)
-            {
-                var user = new ApplicationUser() { UserName = "admin@admin.com" };
-                UserManager.Create(user, "Admin@123");
-                UserManager.AddToRole(user.Id, "Admin");
-            }
+            // create user admin // some time this code is error when update-database @@
+            //if (UserManager.FindByName("admin@admin.com") == null)
+            //{
+            //    var user = new ApplicationUser() { UserName = "admin@admin.com" };
+            //    UserManager.Create(user, "Admin@123");
+            //    UserManager.AddToRole(user.Id, "Admin");
+            //}
         }
     }
 }
