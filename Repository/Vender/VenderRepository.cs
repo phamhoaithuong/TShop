@@ -2,6 +2,7 @@
 using Model.Base;
 using Model.Model;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace Repository.Vender

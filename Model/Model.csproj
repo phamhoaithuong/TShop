@@ -114,6 +114,7 @@
     <Compile Include="Model\ApplicationUser.cs" />
     <Compile Include="Model\CartItem.cs" />
     <Compile Include="Model\Categories.cs" />
+    <Compile Include="Model\CategoryViewModel.cs" />
     <Compile Include="Model\Menu.cs" />
     <Compile Include="Model\MenuGroup.cs" />
     <Compile Include="Model\OrderDetails.cs" />
