@@ -220,6 +220,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\DefaultController.cs" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
@@ -232,6 +233,27 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\assets\css\bootstrap.min.css" />
+    <Content Include="Areas\Admin\assets\css\demo.css" />
+    <Content Include="Areas\Admin\assets\css\material-dashboard.css" />
+    <Content Include="Areas\Admin\assets\img\apple-icon.png" />
+    <Content Include="Areas\Admin\assets\img\cover.jpeg" />
+    <Content Include="Areas\Admin\assets\img\faces\marc.jpg" />
+    <Content Include="Areas\Admin\assets\img\favicon.png" />
+    <Content Include="Areas\Admin\assets\img\mask.png" />
+    <Content Include="Areas\Admin\assets\img\new_logo.png" />
+    <Content Include="Areas\Admin\assets\img\sidebar-1.jpg" />
+    <Content Include="Areas\Admin\assets\img\sidebar-2.jpg" />
+    <Content Include="Areas\Admin\assets\img\sidebar-3.jpg" />
+    <Content Include="Areas\Admin\assets\img\sidebar-4.jpg" />
+    <Content Include="Areas\Admin\assets\img\tim_80x80.png" />
+    <Content Include="Areas\Admin\assets\js\bootstrap-notify.js" />
+    <Content Include="Areas\Admin\assets\js\bootstrap.min.js" />
+    <Content Include="Areas\Admin\assets\js\chartist.min.js" />
+    <Content Include="Areas\Admin\assets\js\demo.js" />
+    <Content Include="Areas\Admin\assets\js\jquery-3.1.0.min.js" />
+    <Content Include="Areas\Admin\assets\js\material-dashboard.js" />
+    <Content Include="Areas\Admin\assets\js\material.min.js" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\colpick.css" />
     <Content Include="Content\css\font-awesome.min.css" />
@@ -715,9 +737,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -764,6 +784,49 @@
     <Content Include="Areas\Admin\Views\web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Views\Shared\_LayoutPage.cshtml" />
+    <Content Include="Areas\Admin\assets\css\.DS_Store" />
+    <Content Include="Areas\Admin\assets\img\.DS_Store" />
+    <Content Include="Areas\Admin\assets\img\faces\.DS_Store" />
+    <Content Include="Areas\Admin\assets\js\.DS_Store" />
+    <Content Include="Areas\Admin\assets\sass\.DS_Store" />
+    <Content Include="Areas\Admin\assets\sass\material-dashboard.scss" />
+    <Content Include="Areas\Admin\assets\sass\md\.DS_Store" />
+    <Content Include="Areas\Admin\assets\sass\md\mixins\_chartist.scss" />
+    <Content Include="Areas\Admin\assets\sass\md\mixins\_transparency.scss" />
+    <Content Include="Areas\Admin\assets\sass\md\mixins\_vendor-prefixes.scss" />
+    <Content Include="Areas\Admin\assets\sass\md\plugins\_animate.scss" />
+    <Content Include="Areas\Admin\assets\sass\md\plugins\_plugin-nouislider.scss" />
+    <Content Include="Areas\Admin\assets\sass\md\_alerts.scss" />
+    <Content Include="Areas\Admin\assets\sass\md\_buttons.scss" />
+    <Content Include="Areas\Admin\assets\sass\md\_cards.scss" />
+    <Content Include="Areas\Admin\assets\sass\md\_chartist.scss" />
+    <Content Include="Areas\Admin\assets\sass\md\_checkboxes.scss" />
+    <Content Include="Areas\Admin\assets\sass\md\_colors.scss" />
+    <Content Include="Areas\Admin\assets\sass\md\_dialogs.scss" />
+    <Content Include="Areas\Admin\assets\sass\md\_dropdown.scss" />
+    <Content Include="Areas\Admin\assets\sass\md\_footers.scss" />
+    <Content Include="Areas\Admin\assets\sass\md\_forms.scss" />
+    <Content Include="Areas\Admin\assets\sass\md\_inputs-size.scss" />
+    <Content Include="Areas\Admin\assets\sass\md\_inputs.scss" />
+    <Content Include="Areas\Admin\assets\sass\md\_misc.scss" />
+    <Content Include="Areas\Admin\assets\sass\md\_mixins.scss" />
+    <Content Include="Areas\Admin\assets\sass\md\_navbars.scss" />
+    <Content Include="Areas\Admin\assets\sass\md\_pills.scss" />
+    <Content Include="Areas\Admin\assets\sass\md\_popups.scss" />
+    <Content Include="Areas\Admin\assets\sass\md\_radios.scss" />
+    <Content Include="Areas\Admin\assets\sass\md\_responsive.scss" />
+    <Content Include="Areas\Admin\assets\sass\md\_ripples.scss" />
+    <Content Include="Areas\Admin\assets\sass\md\_shadows.scss" />
+    <Content Include="Areas\Admin\assets\sass\md\_sidebar-and-main-panel.scss" />
+    <Content Include="Areas\Admin\assets\sass\md\_tables.scss" />
+    <Content Include="Areas\Admin\assets\sass\md\_tabs.scss" />
+    <Content Include="Areas\Admin\assets\sass\md\_togglebutton.scss" />
+    <Content Include="Areas\Admin\assets\sass\md\_typography.scss" />
+    <Content Include="Areas\Admin\assets\sass\md\_variables.scss" />
+    <Content Include="Areas\Admin\Views\Default\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_sidebar.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_header.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
